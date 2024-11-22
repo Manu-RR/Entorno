@@ -1,0 +1,31 @@
+package es.iessoterohernandez.daw.endes.HelloWorldPdf;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
+public class HelloWorldPdf {
+    public static void main(String[] args) {
+        Document document = new Document();
+        try {
+            
+            PdfWriter.getInstance(document, new FileOutputStream("hello_world.pdf"));
+            
+            document.open();
+            
+            
+            document.add(new Paragraph("Hola Mundo"));
+            
+           
+            document.close();
+            
+            System.out.println("PDF generado: hello_world.pdf");
+        } catch (DocumentException | FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
